@@ -16,3 +16,4 @@
 	<li>The server should be able to receive strings from multiple clients in succession without having to restart.</li>
 	<li>Only two signals, SIGUSR1 and SIGUSR2, must be used.</li>
 </ul>
+<a  href="https://miro.com/welcomeonboard/Q1ZiWVZFalpDdWdORkpudlBYaXRtaGo1dkxJQVUxMVhEQU8xTUxWc2ZCcU5uMnowcE0zMmd0Zm5rMnBBek9QZHwzNDU4NzY0NTM5MDg3OTIwNDMwfDI=?share_link_id=918616247506">miro diagram to explain</a>
