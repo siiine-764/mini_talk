@@ -16,5 +16,12 @@
 	<li>The server should be able to receive strings from multiple clients in succession without having to restart.</li>
 	<li>Only two signals, SIGUSR1 and SIGUSR2, must be used.</li>
 </ul>
+
+<h1>Bonus Part</h1>
+
+<ul>
+	<li>The server acknowledges every message received by sending back a signal to the client.</li>
+	<li> Unicode characters support!</li>
+</ul>
 Diagram to explain: https://miro.com/welcomeonboard/Q1ZiWVZFalpDdWdORkpudlBYaXRtaGo1dkxJQVUxMVhEQU8xTUxWc2ZCcU5uMnowcE0zMmd0Zm5rMnBBek9QZHwzNDU4NzY0NTM5MDg3OTIwNDMwfDI=?share_link_id=918616247506<br>
 notebook: https://hip-shield-dca.notion.site/minitalk-d333bcfe2e4c403cbf8518f931c5e64d
