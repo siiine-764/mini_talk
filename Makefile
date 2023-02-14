@@ -1,55 +1,43 @@
-NAME	= so_long
-CC		= gcc
-CFLAGS 	= -Wall -Wextra -Werror
-LIBFT	= libft/libft.a
-FT_PRINTF = ft_printf/libftprintf.a
+NAME_CLIENT=client
+NAME_SERVER=server
+NAME_CLIENT_BONUS=client_bonus
+NAME_SERVER_BONUS=server_bonus
 
-SRCS =	./tools/ft_messages_error.c\
-		./tools/ft_check_path.c\
-		./tools/movement.c\
-		./tools/ft_strjoin.c\
-		./tools/keys.c\
-		so_long.c\
-		./get_next_line/get_next_line_utils.c\
-		./get_next_line/get_next_line.c\
-		./tools/check_map.c\
-		./tools/ft_put_image.c\
-		./tools/ft_check_wall.c\
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra
 
-all: $(NAME)
+CLIENT_SRC=client.c tools.c
+SERVER_SRC=server.c tools.c
+CLIENT_BONUS_SRC=client_bonus.c tools_bonus.c
+SERVER_BONUS_SRC=server_bonus.c tools_bonus.c
 
-OBJS = $(SRCS:.c=.o)
+CLIENT_OBJ=$(CLIENT_SRC:.c=.o)
+SERVER_OBJ=$(SERVER_SRC:.c=.o)
+CLIENT_BONUS_OBJ=$(CLIENT_BONUS_SRC:.c=.o)
+SERVER_BONUS_OBJ=$(SERVER_BONUS_SRC:.c=.o)
 
-$(NAME) : $(OBJS) $(LIBFT) $(FT_PRINTF)
-	@$(CC) libft/libft.a -lmlx -framework OpenGL -framework AppKit  $^ -o $@
-	@echo "\033[1;31m                                                               \n\
-	  ▄████████  ▄██████▄          ▄█          ▄██████▄  ███▄▄▄▄      ▄██████▄      \n\
-	 ███    ███ ███    ███        ███         ███    ███ ███▀▀▀██▄   ███    ███     \n\
-	 ███    █▀  ███    ███        ███         ███    ███ ███   ███   ███    █▀      \n\
-	 ███        ███    ███        ███ mayache ███    ███ ███   ███  ▄███            \n\
-	███████████ ███    ███        ███         ███    ███ ███   ███ ▀▀███ ████▄      \n\
-	        ███ ███    ███        ███         ███    ███ ███   ███   ███    ███     \n\
-	  ▄█    ███ ███    ███        ███▌     ▄  ███    ███ ███   ███   ███    ███     \n\
-	▄████████▀   ▀██████▀  █████  ███████▄▄██  ▀██████▀   ▀█   █▀    ████████▀      \n\
-                                                                       	 		\033[0m"
-$(LIBFT):
-	@make -C libft
-	@make -C libft bonus
-
-$(FT_PRINTF):
-	@make -C ft_printf
+all: $(NAME_SERVER) $(NAME_CLIENT)
+	@echo "DONE !"
+$(NAME_SERVER): $(SERVER_OBJ)
+	$(CC) $(CFLAGS) $(SERVER_OBJ) -o $(NAME_SERVER)
+$(NAME_CLIENT): $(CLIENT_OBJ)
+	$(CC) $(CFLAGS) $(CLIENT_OBJ) -o $(NAME_CLIENT)
 
 clean:
-	@rm -f $(OBJS)
-	@make -C libft clean
-	@make -C ft_printf clean
-	@echo "clean so_long"
+	rm -f *.o
 
 fclean: clean
-	@make -C libft fclean
-	@make -C ft_printf fclean
-	@rm -f $(NAME)
-	@echo "fclean so_long"
+	rm -f $(NAME_SERVER) $(NAME_CLIENT)
+	rm -f $(NAME_CLIENT_BONUS) $(NAME_SERVER_BONUS)
 
-re: fclean all
-	@echo "re so_long"
+re:	fclean all $(NAME_CLIENT_BONUS) $(NAME_SERVER_BONUS)
+
+bonus: $(NAME_CLIENT_BONUS) $(NAME_SERVER_BONUS)
+
+
+$(NAME_CLIENT_BONUS): $(CLIENT_BONUS_OBJ)
+	$(CC) $(CFLAGS) $(CLIENT_BONUS_OBJ) -o $(NAME_CLIENT_BONUS)
+$(NAME_SERVER_BONUS): $(SERVER_BONUS_OBJ)
+	$(CC) $(CFLAGS) $(SERVER_BONUS_OBJ) -o $(NAME_SERVER_BONUS)
+
+.PHONY: clean fclean re all bonus

@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mayache- <mayache-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 16:10:11 by mayache-          #+#    #+#             */
-/*   Updated: 2022/10/24 19:41:25 by mayache-         ###   ########.fr       */
+/*   Created: 2023/01/09 12:22:01 by mayache-          #+#    #+#             */
+/*   Updated: 2023/01/15 14:47:51 by mayache-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
-void	ft_putnbr(long n, int *cnt)
-{
-	unsigned int	nbr;
+# include <stdio.h>
+# include <unistd.h>
+# include <signal.h>
+# include <stdlib.h>
 
-	nbr = n;
-	if (n < 0)
-	{
-		nbr = n * -1;
-		ft_putchr('-', cnt);
-	}
-	if (nbr >= 10)
-	{
-		ft_putnbr(nbr / 10, cnt);
-		ft_putnbr(nbr % 10, cnt);
-	}
-	else
-		ft_putchr(nbr + 48, cnt);
-}
+void	ft_convert(char *str, int n);
+int		ft_power(int nbr, int power);
+int		ft_atoi(const char *str);
+void	ft_putnbr_fd(int n, int fd);
+#endif
