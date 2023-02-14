@@ -8,3 +8,11 @@ https://miro.com/welcomeonboard/Q1ZiWVZFalpDdWdORkpudlBYaXRtaGo1dkxJQVUxMVhEQU8x
 Detail:
 
 https://hip-shield-dca.notion.site/minitalk-d333bcfe2e4c403cbf8518f931c5e64d
+
+Execution
+
+    <code>make</code> or <code>make all</code> <code>make bonus</code> 
+
+    bash <code>./server</code>
+
+    bash <code>./client [SERVER PID] [SEND MESSAGE]</code>
